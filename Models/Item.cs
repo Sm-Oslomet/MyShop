@@ -16,7 +16,7 @@ namespace MyShop.Models // Defines namespace called myshop models
                                         // { get; set; } defines an auto implemented property with a public getter
                                         // and setter, allowing the value ot be read and written
 
-        public string Name { get; set; }  // String and class must be declared with default 
+        public string? Name { get; set; }  // String and class must be declared with default 
                                                          // values string. Empty or default! for class
                                                          // string.Empty initializes the Name property with an 
                                                          // empty string by default. This ensures that Name
