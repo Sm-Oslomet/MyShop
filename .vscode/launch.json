@@ -9,14 +9,14 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/bin/Debug/net8.0/MyShop.dll",
+            "program": "${workspaceFolder}/bin/Debug/net9.0/MyShop.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",
                 "pattern": "\\bNow listening on:\\s+(http?://\\S+)",
-                "uriFormat": "%s"
+                "uriFormat": "%s/item/table"
             },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
@@ -24,6 +24,8 @@
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
             }
-        }      
+        }
+
+
     ]
 }
