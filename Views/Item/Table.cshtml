@@ -1,15 +1,5 @@
 @using MyShop.Models
 @model IEnumerable<MyShop.Models.Item>
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" cotent ="width=device-width" />
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-    <title>My Shop</title>
-</head>
-<body>
     <div class="container">
         <h1>@ViewBag.CurrentViewName</h1> <!-- outputs h1 header wuith value viewbag.. 
                                                 viewbag.. is a razor syntax to embed server side ocde in the view.
@@ -29,5 +19,3 @@
             }
         </table>
     </div>
-</body>
-</html>
