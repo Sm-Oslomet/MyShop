@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using MyShop.Models;
+using MyShop.ViewModels;
 
 namespace MyShop.Controllers;
 
@@ -13,16 +14,26 @@ public class ItemController : Controller
     public IActionResult Table()
     {
         var items = GetItems();
-        ViewBag.CurrentViewName = "Table";
-        return View(items);
+        var itemsViewModel = new ItemsViewModel(items, "Table");
+        return View(itemsViewModel);
     }
 
     public IActionResult Grid()
     {
         var items = GetItems();
-        ViewBag.CurrentViewName = "Grid";
-        return View(items);
+        var itemsViewModel = new ItemsViewModel(items, "Grid");
+        return View(itemsViewModel);
     }
+
+    public IActionResult Details(int id)
+    {
+        var items = GetItems();
+        var item = items.FirstOrDefault(i => i.ItemId == id);
+        if (item == null)
+            return NotFound();
+        return View(item);
+    }
+
 
     public List<Item> GetItems()
     {
@@ -59,29 +70,33 @@ public class ItemController : Controller
             Description = "delicious ribs",
             ImageUrl = "/images/ribs.jpg"
 
-         };
-        var item5 = new Item {
+        };
+        var item5 = new Item
+        {
             ItemId = 5,
             Name = "Tacos",
             Price = 50,
             Description = "Delicious Tacos",
             ImageUrl = "/images/tacos.jpg"
         };
-        var item6 = new Item {
-            ItemId = 6 ,
+        var item6 = new Item
+        {
+            ItemId = 6,
             Name = "Fish and Chips",
             Price = 180,
             Description = "classic fish and chips from britain",
             ImageUrl = "/images/fishandchips.jpg"
         };
-        var item7 = new Item {
-             ItemId = 7,
+        var item7 = new Item
+        {
+            ItemId = 7,
             Name = "Cider",
             Price = 25,
             Description = "Delicious cider",
             ImageUrl = "/images/cider.jpg"
         };
-        var item8 = new Item {
+        var item8 = new Item
+        {
             ItemId = 8,
             Name = "Coke",
             Price = 50,

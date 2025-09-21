@@ -1,6 +1,6 @@
 @model ItemsViewModel
 
-<h1>List of Shop Items (@ViewBag.CurrentViewName View)</h1> <!-- displays the title of the view, including a dynamic part from Viewbag currentview -->
+<h1>List of Shop Items (@Model.CurrentViewName View)</h1> <!-- displays the title of the view, including a dynamic part from Viewbag currentview -->
 <a href="/Item/Table">Table View</a> <!-- Provides a link to navigate to the table view of the items -->
 
 <div class="row row-cols-1 row-cols-md-3 g-4"> <!-- sets up a responsive grid with one column per row on small screens and three columns per row on medium and larger screens -->
