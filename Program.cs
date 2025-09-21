@@ -9,6 +9,8 @@ if (appa.Environment.IsDevelopment())
     appa.UseDeveloperExceptionPage();
 }
 
+appa.UseStaticFiles();
+
 appa.MapDefaultControllerRoute();
 
 appa.Run();
