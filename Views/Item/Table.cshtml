@@ -1,24 +1,23 @@
-@using MyShop.Models
-@model IEnumerable<MyShop.Models.Item>
-    <div class="container">
-        <h1>@ViewBag.CurrentViewName</h1> <!-- outputs h1 header wuith value viewbag.. 
-                                                viewbag.. is a razor syntax to embed server side ocde in the view.
-                                                viewbag is dynamic object used to pass data from the controller to the view-->
-        <a href="/Item/Grid">Grid View</a>
-        <table class='table table-stripped'> <!-- defines a table element with classes table and table stripped-->
-            <tr><th>Id</th><th>Name</th><th>Price</th><th>Description</th></tr> <!-- Creates a table row tr, containing headers th for id name 
-                                                                                price and descriptiojnm-->
-                                                                                
+@model ItemsViewModel
 
-            @foreach (var item in Model) // @foreach starts a loop in razor, iterates of the item in the model. model is a dynamic obj passed to the view from contrl
-            {
-                <tr>
-                    <td>@item.ItemId</td> <!-- creates a table cell and displays the ItemID property for current item, same with name and price -->
-                    <td>@item.Name</td>
-                    <td>@item.Price.ToString("0.00 NOK")</td>
-                    <td>@item.Description</td>
-                    <td></td>
-                </tr>
-            }
-        </table>
-    </div>
+<h1>List of Shop Items (@Model.CurrentViewName View)</h1>
+<a href="/Item/Grid">Grid View</a>
+
+<div class="container">
+    <table class="table table-striped">
+        <tr><th>Id</th><th>Name</th><th>Price</th><th>Description</th></tr>
+        @foreach (var item in Model.Items){
+            <tr>
+                <td>@item.ItemId</td>
+                <td>
+                    <a asp-controller="Item"
+                       asp-action="Details"
+                       asp-route-id="@item.ItemId">@item.Name</a>
+                </td>
+                <td>@item.Price</td>
+                <td>@item.Description</td>
+                <td></td>
+            </tr>
+        }
+    </table>
+</div>
