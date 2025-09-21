@@ -1,0 +1,25 @@
+@model IEnumerable<Item> // Model declaration, specifies that the view expects a collection of Item Objects
+
+<h1>List of Shop Items (@ViewBag.CurrentViewName View)</h1> <!-- displays the title of the view, including a dynamic part from Viewbag currentview -->
+<a href="/Item/Table">Table View</a> <!-- Provides a link to navigate to the table view of the items -->
+
+<div class="row row-cols-1 row-cols-md-3 g-4"> <!-- sets up a responsive grid with one column per row on small screens and three columns per row on medium and larger screens -->
+    @foreach (var item in Model) // item loop: iterates over each item in the model collection
+    {
+        <div class="col"> <!-- represents a column in the grid for each item -->
+            <div>
+                <img src="@item.ImageUrl" class="card-ing-top" alt="@item.Name"> <!-- displays the item's image -->
+                <div>
+                    <div class="d-flex justify-content-between mt-2"> <!-- creates a felx container to align item anem and price -->
+                        <h5 class="text-start"> <!-- displays the item's name, aaligned to the start (left) -->
+                            @item.Name
+                        </h5>
+                        <h5 class="text-nowrap"> <!-- displays the item's price, foramtted as currency with NOK -->
+                            @item.Price.ToString("0.00 NOK")
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
