@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using MyShop.Models;
 
-namespace Myshop.Models;
+namespace MyShop.Models;
 
 public class ItemDbContext : DbContext // inherits from DbContext
 {

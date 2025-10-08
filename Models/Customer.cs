@@ -1,4 +1,4 @@
-namespace Myshop.Models;
+namespace MyShop.Models;
 
 public class Customer
 {
