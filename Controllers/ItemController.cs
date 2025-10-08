@@ -43,6 +43,71 @@ public class ItemController : Controller
     }
 
 
+    [HttpGet]
+    public IActionResult Create() // sends user to a view for creating, when they go to the create page
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult create(Item item) // post method for when user clicks on "create" so that the data is sent
+    {
+        if (ModelState.IsValid)
+        {
+            _itemDbContext.Items.Add(item);
+            _itemDbContext.SaveChanges();
+            return RedirectToAction(nameof(Table));
+        }
+        return View(item);
+    }
+
+
+    [HttpGet]
+    public IActionResult Update(int id)
+    {
+        var item = _itemDbContext.Items.Find(id);
+        if (item == null)
+        {
+            return NotFound();
+        }
+        return View(item);
+    }
+
+    [HttpPost]
+    public IActionResult Update(Item item)
+    {
+        if (ModelState.IsValid)
+        {
+            _itemDbContext.Items.Update(item);
+            _itemDbContext.SaveChanges();
+            return RedirectToAction(nameof(Table));
+        }
+        return View(item);
+    }
+
+    [HttpGet]
+    public IActionResult Delete(int id)
+    {
+        var item = _itemDbContext.Items.Find(id);
+        if (item == null)
+        {
+            return NotFound();
+        }
+        return View(item);
+    }
+
+    [HttpPost]
+    public IActionResult DeleteConfirmed(int id)
+    {
+        var item = _itemDbContext.Items.Find(id);
+        if (item == null)
+        {
+            return NotFound();
+        }
+        _itemDbContext.Items.Remove(item);
+        _itemDbContext.SaveChanges();
+        return RedirectToAction(nameof(Table));
+    }
     // public List<Item> GetItems()
     // {
     //     var items = new List<Item>();
