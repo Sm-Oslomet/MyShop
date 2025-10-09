@@ -11,15 +11,16 @@ builder.Services.AddDbContext<ItemDbContext>(options =>{
 });
 
 
-var appa = builder.Build();
+var app = builder.Build();
 
-if (appa.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
-    appa.UseDeveloperExceptionPage();
+    app.UseDeveloperExceptionPage();
+    DBInit.Seed(app);
 }
 
-appa.UseStaticFiles();
+app.UseStaticFiles();
 
-appa.MapDefaultControllerRoute();
+app.MapDefaultControllerRoute();
 
-appa.Run();
+app.Run();
