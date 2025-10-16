@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using MyShop.Models;
+using MyShop.DAL;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +10,7 @@ builder.Services.AddDbContext<ItemDbContext>(options =>{
         builder.Configuration["ConnectionStrings:ItemDbContextConnection"]);
 });
 
+builder.Services.AddScoped<IItemRepository, ItemRespository>();
 
 var app = builder.Build();
 

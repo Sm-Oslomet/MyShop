@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyShop.Models;
 using MyShop.ViewModels;
+using MyShop.DAL;
 
 namespace MyShop.Controllers;
 
